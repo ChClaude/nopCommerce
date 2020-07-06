@@ -69,9 +69,8 @@ namespace Nop.Services.Orders
         /// <param name="customerEnteredPrice">Customer entered price</param>
         /// <param name="quantity">Quantity</param>
         /// <returns>Warnings</returns>
-        IList<string> GetStandardWarnings(Customer customer, ShoppingCartType shoppingCartType,
-            Product product, string attributesXml,
-            decimal customerEnteredPrice, int quantity);
+        IList<string> GetStandardWarnings(Customer customer, ShoppingCartType shoppingCartType, Product product, 
+            string attributesXml, decimal customerEnteredPrice, int quantity, int shoppingCartItemId, int storeId);
 
         /// <summary>
         /// Gets shopping cart

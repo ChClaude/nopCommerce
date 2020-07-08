@@ -187,57 +187,6 @@ namespace Nop.Web.Areas.Admin.Controllers
                 string.Format(_localizationService.GetResource("ActivityLog.EditOrder"), order.CustomOrderNumber), order);
         }
 
-        protected virtual string AddGiftCards(IFormCollection form, Product product, string attributesXml,
-           out string recipientName, out string recipientEmail, out string senderName, out string senderEmail,
-           out string giftCardMessage)
-        {
-            recipientName = string.Empty;
-            recipientEmail = string.Empty;
-            senderName = string.Empty;
-            senderEmail = string.Empty;
-            giftCardMessage = string.Empty;
-
-            if (!product.IsGiftCard)
-                return attributesXml;
-
-            foreach (var formKey in form.Keys)
-            {
-                if (formKey.Equals("giftcard.RecipientName", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    recipientName = form[formKey];
-                    continue;
-                }
-
-                if (formKey.Equals("giftcard.RecipientEmail", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    recipientEmail = form[formKey];
-                    continue;
-                }
-
-                if (formKey.Equals("giftcard.SenderName", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    senderName = form[formKey];
-                    continue;
-                }
-
-                if (formKey.Equals("giftcard.SenderEmail", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    senderEmail = form[formKey];
-                    continue;
-                }
-
-                if (formKey.Equals("giftcard.Message", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    giftCardMessage = form[formKey];
-                }
-            }
-
-            attributesXml = _productAttributeParser.AddGiftCardAttribute(attributesXml,
-                recipientName, recipientEmail, senderName, senderEmail, giftCardMessage);
-
-            return attributesXml;
-        }
-
         #endregion
 
         #region Order list
